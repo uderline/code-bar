@@ -1,0 +1,23 @@
+<h1>Question 1</h1>
+
+<p>Selected answer: {{ selectedAnswer?.label }}</p>
+
+<div style="width: 500px">
+<zxing-scanner [formats]="[BarcodeFormat.CODE_128]" (scanSuccess)="onCodeResult($event)"></zxing-scanner>
+</div>
+
+@for (availableAnswer of availableAnswers; track availableAnswer.value) {
+    <p>
+        <input #inputs
+               type="radio"
+               name="coucou"
+               [value]="availableAnswer.value"
+               [id]="availableAnswer.value+'-input'"
+               [checked]="selectedAnswer?.value == availableAnswer.value"
+               (change)="onChange(availableAnswer.value)">
+        <label [for]="availableAnswer.value+'-input'"> {{ availableAnswer.label }}</label>
+    </p>
+}
+<p>
+    <button>Envoyer</button>
+</p>
