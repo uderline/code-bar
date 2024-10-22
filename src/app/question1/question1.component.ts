@@ -1,4 +1,4 @@
-import {Component, ElementRef, Host, HostListener, QueryList, ViewChildren} from '@angular/core';
+import {Component, ElementRef, HostListener, QueryList, ViewChildren} from '@angular/core';
 import {ZXingScannerModule} from "@zxing/ngx-scanner";
 import {BarcodeFormat} from "@zxing/library";
 
@@ -21,8 +21,8 @@ export class Question1Component {
         {label: 'Salut', value: 2},
         {label: 'Hello', value: 3},
     ];
-    selectedAnswer = this.availableAnswers[0];
-    selectedAnswerIndex = 0;
+    selectedAnswer?: { label: string; value: number };
+    selectedAnswerIndex = -1;
 
     @HostListener('document:keydown', ['$event'])
     handleKeyboardEvent(event: KeyboardEvent) {
